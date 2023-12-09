@@ -13,6 +13,21 @@ html {
   color: #16175f;
 }
 
+.main-container {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.vertical-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
 .spinner {
   width: 48px;
   height: 48px;

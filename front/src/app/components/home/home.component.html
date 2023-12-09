@@ -1,11 +1,15 @@
-<div class="full-screen-div">
+<div class="main-container vertical-center home-background">
   <div class="center-block">
     <div class="center-content">
       @if (numberOfQuestions()) {
         <p>{{ getQuestionsLabel() }}</p>
       }
       <h1>Mon test technique</h1>
-      <p-button label="DÉMARRER" [disabled]="!numberOfQuestions()"></p-button>
+      <p-button
+        label="DÉMARRER"
+        [disabled]="!numberOfQuestions()"
+        (onClick)="startQuiz()"
+      ></p-button>
     </div>
 
     @if (!numberOfQuestions()) {

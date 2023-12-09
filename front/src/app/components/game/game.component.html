@@ -1,1 +1,18 @@
-<p>game works!</p>
+<div class="main-container">
+  <app-header
+    [showQuestion]="true"
+    [currentQuestion]="currentQuestionId() ?? 0"
+    [maxQuestion]="numberOfQuestions()"
+    [showTimer]="true"
+    [secondsLeft]="timer()"
+  ></app-header>
+  <div class="vertical-center content-container">
+    <h2 class="question">{{ currentQuestion()?.label }}</h2>
+    <app-answer-input></app-answer-input>
+    <p-button
+      label="VALIDER"
+      [disabled]="false"
+      (onClick)="confirmAnswer()"
+    ></p-button>
+  </div>
+</div>

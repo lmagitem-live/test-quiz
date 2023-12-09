@@ -2,9 +2,10 @@ import { Injectable, computed, signal } from '@angular/core';
 
 import { GameRun } from '../models/game-run';
 import { GameState } from '../models/game-state';
+import { Question } from '../models/question';
 import { QuestionSet } from '../models/question-set';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class GameStore {
   private previousRunsMutable = signal<GameRun[]>([]);
 
@@ -31,7 +32,18 @@ export class GameStore {
       )[0]?.id
   );
 
+  public currentQuestion = computed<Question | undefined>(
+    () =>
+      this.questions().questions.filter(
+        (q) => !this.currentRun().answers.find((a) => q.id === a.questionId)
+      )[0]
+  );
+
   public currentGameState = computed<GameState>(() => this.currentRun().state);
+
+  public numberOfQuestions = computed<number>(
+    () => this.questions().questions.length
+  );
 
   public setCurrentQuestions(questionSet: QuestionSet): void {
     this.questionsMutable.set(questionSet);
@@ -40,15 +52,17 @@ export class GameStore {
     if (previousRun.state === 'done' && previousRun.answers.length > 0) {
       this.previousRunsMutable.update((runs) => [...runs, previousRun]);
     }
+  }
 
+  public initCurrentRun(): void {
     this.currentRunMutable.set({
-      questionsHash: questionSet.hash,
+      questionsHash: this.questions().hash,
       state: 'toLaunch',
       answers: [],
     });
   }
 
-  public numberOfQuestions = computed<number>(
-    () => this.questions().questions.length
-  );
+  public setRunStatus(state: GameState): void {
+    this.currentRunMutable.update((run) => ({ ...run, state }));
+  }
 }

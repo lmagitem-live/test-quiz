@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { Question } from '../models/question';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class RestService {
   constructor(private httpClient: HttpClient) {}
 

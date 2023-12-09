@@ -12,7 +12,7 @@ export const questionGuard: CanActivateFn = (route) => {
   const hash = route.params['hash'];
   const questionId = route.params['id'];
 
-  if (hash != currentHash || hash == '-1') {
+  if (hash != currentHash) {
     router.navigate(['/home']);
     return false;
   }

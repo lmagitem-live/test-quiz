@@ -1,0 +1,8 @@
+<div class="header">
+  @if (showQuestion) {
+    <p>Question {{ currentQuestion }}/{{ maxQuestion }}</p>
+  }
+  @if (showTimer) {
+    <p>{{ secondsLeft | padNumber: 4 }}</p>
+  }
+</div>

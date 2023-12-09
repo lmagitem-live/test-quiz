@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 import { CanActivateFn } from '@angular/router';
 
-import { resultsGuard } from './game.guard';
+import { resultsGuard } from './results.guard';
 
-describe('gameGuard', () => {
+describe('resultsGuard', () => {
   const executeGuard: CanActivateFn = (...guardParameters) =>
     TestBed.runInInjectionContext(() => resultsGuard(...guardParameters));
 

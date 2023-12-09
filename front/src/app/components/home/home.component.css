@@ -1,15 +1,8 @@
-.full-screen-div {
-  width: 100%;
-  height: 100%;
+.home-background {
   background: linear-gradient(90deg, #0e0b77 0%, #2320b7 51.32%, #0e0b77 100%),
     #f2f4f7;
   background-repeat: no-repeat;
   background-size: 100% 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
 }
 
 .center-block {

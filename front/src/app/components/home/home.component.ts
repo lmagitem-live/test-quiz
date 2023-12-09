@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
@@ -16,9 +16,10 @@ import { ScoreInsertComponent } from '../score-insert/score-insert.component';
     ProgressSpinnerModule,
     ScoreInsertComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit {
-  public numberOfQuestions = this.gameService.areQuestionsLoaded();
+  public numberOfQuestions = this.gameService.getNumberOfQuestions();
 
   constructor(private gameService: GameService) {}
 
@@ -29,5 +30,11 @@ export class HomeComponent implements OnInit {
   public getQuestionsLabel(): string {
     const n = this.numberOfQuestions();
     return `${n} question${n > 1 ? 's' : ''}`;
+  }
+
+  public startQuiz(): void {
+    if (this.numberOfQuestions() > 0) {
+      this.gameService.startGame();
+    }
   }
 }

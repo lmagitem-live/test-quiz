@@ -9,10 +9,9 @@ export const resultsGuard: CanActivateFn = (route) => {
 
   const currentHash = gameService.getCurrentHash()();
   const currentQuestionId = gameService.getCurrentQuestionId()();
-  const currentState = gameService.getCurrentGameState()();
   const hash = route.params['hash'];
 
-  if (hash != currentHash || currentState != 'done') {
+  if (hash != currentHash) {
     router.navigate(['/home']);
     return false;
   }

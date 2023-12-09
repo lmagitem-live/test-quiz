@@ -1,0 +1,85 @@
+.full-screen-div {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #0e0b77 0%, #2320b7 51.32%, #0e0b77 100%),
+    #f2f4f7;
+  background-repeat: no-repeat;
+  background-size: 100% 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.center-block {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.center-content {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #0e0b77;
+  box-shadow: 0px 4px 44px 0px #16175f33;
+  background: #ffffff;
+  width: 730px;
+  padding: 16px;
+  border-radius: 8px;
+  gap: 16px;
+}
+
+.spinner-container {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 108px;
+}
+
+p {
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin: 0;
+}
+
+h1 {
+  font-size: 32px;
+  line-height: 42px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin: 0;
+}
+
+.angular-logo {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+
+  img {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 78px;
+    height: 78px;
+  }
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.centered-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}

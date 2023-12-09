@@ -9,9 +9,7 @@ import { HashUtils } from '../utils/hash.utils';
 
 import { RestService } from './rest.service';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class GameService {
   constructor(
     private restService: RestService,
@@ -28,6 +26,10 @@ export class GameService {
 
   public getCurrentGameState(): Signal<GameState> {
     return this.store.currentGameState;
+  }
+
+  public areQuestionsLoaded(): Signal<number> {
+    return this.store.numberOfQuestions;
   }
 
   public async loadQuestions(): Promise<void> {

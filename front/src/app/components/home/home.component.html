@@ -1,5 +1,26 @@
-<a routerLink="/home">Home</a>
-<a [routerLink]="['/game', 1, 'question', 1]">Go to Question</a>
-<a [routerLink]="['/game', 1, 'results']">View Results</a>
+<div class="full-screen-div">
+  <div class="center-block">
+    <div class="center-content">
+      @if (numberOfQuestions()) {
+        <p>{{ getQuestionsLabel() }}</p>
+      }
+      <h1>Mon test technique</h1>
+      <p-button label="DÉMARRER" [disabled]="!numberOfQuestions()"></p-button>
+    </div>
 
-<p>home works!</p>
+    @if (!numberOfQuestions()) {
+      <p-progressSpinner
+        class="spinner-container"
+        styleClass="spinner"
+      ></p-progressSpinner>
+    }
+  </div>
+</div>
+
+<div class="angular-logo">
+  <img src="assets/angular.png" alt="Angular Logo" />
+</div>
+
+<div class="footer">
+  <div class="centered-footer"><app-score-insert></app-score-insert></div>
+</div>

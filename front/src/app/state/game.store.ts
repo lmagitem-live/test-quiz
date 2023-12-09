@@ -4,9 +4,7 @@ import { GameRun } from '../models/game-run';
 import { GameState } from '../models/game-state';
 import { QuestionSet } from '../models/question-set';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class GameStore {
   private previousRunsMutable = signal<GameRun[]>([]);
 
@@ -49,4 +47,8 @@ export class GameStore {
       answers: [],
     });
   }
+
+  public numberOfQuestions = computed<number>(
+    () => this.questions().questions.length
+  );
 }

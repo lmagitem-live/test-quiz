@@ -4,7 +4,7 @@ use actix_files::{Files, NamedFile};
 use actix_web::middleware::Logger;
 
 async fn fetch_data() -> Result<String, reqwest::Error> {
-    let response = reqwest::get("https://dummyjson.com/quotes").await?;
+    let response = reqwest::get("https://storage.googleapis.com/netwo-public/quizz.json").await?;
     let data = response.text().await?;
     Ok(data)
 }

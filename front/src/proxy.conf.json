@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "https://dummyjson.com/quotes",
+    "target": "https://storage.googleapis.com/netwo-public/quizz.json",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true,

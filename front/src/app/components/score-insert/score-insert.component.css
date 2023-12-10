@@ -1,0 +1,36 @@
+.score-insert {
+  min-height: 155px;
+  padding: 16px 24px 16px 24px;
+  border-radius: 8px 8px 0px 0px;
+  gap: 8px;
+
+  background: #ffffff;
+  justify-content: flex-start;
+
+  color: #16175f;
+  letter-spacing: 0em;
+}
+
+.trophee {
+  margin: 0;
+  padding: 0;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 25px;
+}
+
+.title {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 21px;
+}
+
+.score {
+  margin: 0;
+  padding: 0;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 31px;
+}

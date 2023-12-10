@@ -1,3 +1,25 @@
 <div>
   <app-header></app-header>
+  <div class="results-container">
+    <div class="half-container vertical-center">
+      <h2 class="congratulations">🎉<br />Le Quiz est terminé !</h2>
+      <h1 class="score"><span>09/10</span><br />réponses justes</h1>
+      <div class="high-score">
+        <p>Meilleur score: XX/XX</p>
+        <p-message severity="success" text="New!"></p-message>
+      </div>
+    </div>
+    <div class="half-container vertical-center">
+      <div class="results-details">
+        <h3 class="results-details-title">Détail des résultats :</h3>
+        @for (questionAnswered of questionsAnswered(); track $index) {
+          <p class="results-details-question">
+            {{ questionAnswered.question }}
+            &nbsp;
+            {{ questionAnswered.success ? '✔️' : '❌' }}
+          </p>
+        }
+      </div>
+    </div>
+  </div>
 </div>

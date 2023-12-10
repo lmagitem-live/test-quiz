@@ -32,3 +32,48 @@ html {
   width: 48px;
   height: 48px;
 }
+
+.p-button {
+  background: #3c50e0;
+}
+
+.p-button:not(:disabled):hover {
+  background: #2320b7;
+}
+
+.p-radiobutton .p-radiobutton-box {
+  background: transparent;
+  border: 2px solid #6d6d72;
+  width: 20px;
+  height: 20px;
+}
+
+.p-checkbox .p-checkbox-box {
+  background: transparent;
+  border: 2px solid #6d6d72;
+  border-radius: 3px;
+  width: 20px;
+  height: 20px;
+}
+
+.p-checkbox .p-checkbox-box.p-highlight {
+  border-color: #3c50e0;
+  background: #3c50e0;
+}
+
+.p-inline-message {
+  width: 64px;
+  height: 32px;
+  border-radius: 8px;
+}
+.p-inline-message > .p-icon-wrapper {
+  display: none;
+}
+.p-inline-message .p-inline-message-text {
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  text-align: left;
+}

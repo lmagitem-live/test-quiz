@@ -1,1 +1,37 @@
-<p>answer-input works!</p>
+@if (question && question() !== undefined) {
+  @if (question()!.answerType === 'choice') {
+    <div class="answers-container">
+      @for (choice of question()!.choices; track $index) {
+        <label for="choice{{ $index }}" class="answer-card answer-label p-focus"
+          >{{ choice }}
+          <div class="button-container">
+            <p-radioButton
+              name="answers"
+              [value]="choice"
+              [(ngModel)]="value"
+              inputId="choice{{ $index }}"
+            ></p-radioButton></div
+        ></label>
+      }
+    </div>
+  } @else if (question()!.answerType === 'text') {
+    <div class="text-container">
+      <label for="textInput" class="text-label">Votre réponse</label>
+      <input id="textInput" type="text" pInputText [(ngModel)]="value" />
+    </div>
+  } @else if (question()!.answerType === 'multiple-choice') {
+    <div class="answers-container">
+      @for (choice of question()!.choices; track $index) {
+        <label for="choice{{ $index }}" class="answer-card answer-label"
+          >{{ choice }}
+          <p-checkbox
+            name="answers"
+            [value]="choice"
+            [(ngModel)]="value"
+            inputId="choice{{ $index }}"
+          ></p-checkbox>
+        </label>
+      }
+    </div>
+  }
+}

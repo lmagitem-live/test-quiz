@@ -1,8 +1,12 @@
 <div class="header">
   @if (showQuestion) {
-    <p>Question {{ currentQuestion }}/{{ maxQuestion }}</p>
+    <div class="text-container questions-left">
+      <p>Question {{ currentQuestion }}/{{ maxQuestion }}</p>
+    </div>
   }
   @if (showTimer) {
-    <p>{{ secondsLeft | padNumber: 4 }}</p>
+    <div class="text-container timer">
+      <p>{{ secondsLeft | padNumber: 4 }}</p>
+    </div>
   }
 </div>

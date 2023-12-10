@@ -15,7 +15,7 @@
       ></app-answer-input>
       <p-button
         label="VALIDER"
-        [disabled]="false"
+        [disabled]="!currentAnswer()"
         (onClick)="confirmAnswer()"
       ></p-button>
     }

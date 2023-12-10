@@ -2,7 +2,11 @@
   @if (question()!.answerType === 'choice') {
     <div class="answers-container">
       @for (choice of question()!.choices; track $index) {
-        <label for="choice{{ $index }}" class="answer-card answer-label p-focus"
+        <label
+          for="choice{{ $index }}"
+          class="answer-card answer-label p-focus {{
+            choice === value ? 'selected' : ''
+          }}"
           >{{ choice }}
           <div class="button-container">
             <p-radioButton

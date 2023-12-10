@@ -1,14 +1,14 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 
-import { GameService } from '../services/game.service';
+import { GameSignalsService } from '../services/game-signals.service';
 
 export const resultsGuard: CanActivateFn = (route) => {
-  const gameService = inject(GameService);
+  const handler = inject(GameSignalsService);
   const router = inject(Router);
 
-  const currentHash = gameService.getCurrentHash()();
-  const currentQuestionId = gameService.getCurrentQuestionId()();
+  const currentHash = handler.getCurrentHash()();
+  const currentQuestionId = handler.getCurrentQuestionId()();
   const hash = route.params['hash'];
 
   if (hash != currentHash) {

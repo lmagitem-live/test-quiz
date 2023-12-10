@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { SubSink } from 'subsink';
 
+import { GameSignalsService } from '../../services/game-signals.service';
 import { GameService } from '../../services/game.service';
 import { AnswerInputComponent } from '../answer-input/answer-input.component';
 import { HeaderComponent } from '../header/header.component';
@@ -23,11 +24,13 @@ import { HeaderComponent } from '../header/header.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GameComponent implements AfterViewInit, OnDestroy {
-  public currentQuestionId = this.gameService.getCurrentQuestionId();
+  public currentQuestionId = this.handler.getCurrentQuestionId();
 
-  public numberOfQuestions = this.gameService.getNumberOfQuestions();
+  public numberOfQuestions = this.handler.getNumberOfQuestions();
 
-  public currentQuestion = this.gameService.getCurrentQuestion();
+  public currentQuestion = this.handler.getCurrentQuestion();
+
+  public currentAnswer = this.handler.getCurrentAnswer();
 
   public timer = signal<number>(120);
 
@@ -36,10 +39,14 @@ export class GameComponent implements AfterViewInit, OnDestroy {
   private subs = new SubSink();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private timerTimeout?: any;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private debounceTimeout?: any;
 
   constructor(
-    private gameService: GameService,
+    private service: GameService,
+    private handler: GameSignalsService,
     private route: ActivatedRoute,
     private changeDetector: ChangeDetectorRef
   ) {}
@@ -51,23 +58,31 @@ export class GameComponent implements AfterViewInit, OnDestroy {
 
   public ngOnDestroy(): void {
     this.subs.unsubscribe();
+    if (this.timerTimeout) {
+      clearTimeout(this.timerTimeout);
+    }
+    if (this.debounceTimeout) {
+      clearTimeout(this.debounceTimeout);
+    }
   }
 
   public onAnswerChange(answer: string | string[]): void {
-    this.gameService.setCurrentAnswer(answer);
+    if (answer) {
+      this.handler.setCurrentAnswer(answer);
+    }
   }
 
   public confirmAnswer(): void {
-    this.gameService.confirmAnswer();
+    this.service.confirmAnswer();
   }
 
   private decrementTimer(): void {
-    setTimeout(() => {
+    this.timerTimeout = setTimeout(() => {
       if (this.timer() > 0) {
         this.timer.update((t) => t - 1);
         this.decrementTimer();
       } else {
-        this.gameService.gameOver();
+        this.service.gameOver();
       }
     }, 1000);
   }

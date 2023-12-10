@@ -1,7 +1,7 @@
 .content-container {
-  padding: 104px 32px;
+  padding: 104px 32px 57px;
   width: 100%;
-  height: calc(100% - 32px);
+  height: calc(100% - 79px);
   justify-content: space-between;
 }
 

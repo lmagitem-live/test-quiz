@@ -1,5 +1,13 @@
 <div class="score-insert vertical-center">
   <p class="trophee">🏆</p>
   <p class="title">Meilleur score</p>
-  <p class="score">09/10</p>
+  <p class="score">
+    {{
+      !!highScore()
+        ? (highScore()!.validAnswers | padNumber: padHighScore())
+        : 'N'
+    }}/{{
+      !!highScore() ? (highScore()!.questions | padNumber: padHighScore()) : 'A'
+    }}
+  </p>
 </div>

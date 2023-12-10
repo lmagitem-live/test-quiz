@@ -1,27 +1,47 @@
 import { Question } from '../models/question';
+import { Score } from '../models/score';
 
 export abstract class AnswerVerificationUtils {
   public static isAnswerValid(
     question: Question,
     answer?: string | string[]
   ): boolean {
-    let result = true;
+    let result = false;
     if (Array.isArray(answer)) {
-      question.answers?.forEach((expectedAnswer) => {
-        const rightAnswer = answer.find((givenAnswer) =>
-          this.isRightAnswer(expectedAnswer, givenAnswer)
-        );
-        if (!rightAnswer) result = false;
-      });
+      result = this.areRightAnswers(answer, question.answers);
     } else if (answer) {
-      result = this.isRightAnswer(question.answer ?? '', answer);
+      result = this.isRightAnswer(answer, question.answer ?? '');
     }
     return result;
   }
 
+  public static isHigherScore(current?: Score, old?: Score): boolean {
+    return (
+      (current?.validAnswers ?? 1) / (current?.questions ?? 1) >
+      (old?.validAnswers ?? 1) / (old?.questions ?? 1)
+    );
+  }
+
+  private static areRightAnswers(
+    answers: string[],
+    expectedAnswers?: string[]
+  ): boolean {
+    let allValid = true;
+    expectedAnswers?.forEach((expectedAnswer) => {
+      const rightAnswer = answers.find((givenAnswer) =>
+        this.isRightAnswer(expectedAnswer, givenAnswer)
+      );
+      if (!rightAnswer) allValid = false;
+    });
+    if (expectedAnswers?.length !== answers.length) {
+      allValid = false;
+    }
+    return allValid;
+  }
+
   private static isRightAnswer(
-    expectedAnswer: string,
-    answer: string
+    answer: string,
+    expectedAnswer: string
   ): boolean {
     return this.normalizeString(expectedAnswer) == this.normalizeString(answer);
   }

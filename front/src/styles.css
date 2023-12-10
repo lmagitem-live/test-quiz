@@ -36,9 +36,14 @@ html {
 .p-button {
   background: #3c50e0;
 }
-
 .p-button:not(:disabled):hover {
   background: #2320b7;
+}
+.p-disabled {
+  background: #e1e1e1;
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+  color: #a6a7a6;
 }
 
 .p-radiobutton .p-radiobutton-box {
@@ -76,4 +81,17 @@ html {
   line-height: 20px;
   letter-spacing: 0.1px;
   text-align: left;
+}
+
+.github-handle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+
+  a img {
+    display: block;
+    width: 40px;
+    height: 40px;
+  }
 }

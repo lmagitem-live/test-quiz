@@ -23,6 +23,9 @@
   transition-duration: 0.2s;
   box-shadow: 0 0 0 0.1rem #bfdbfe;
 }
+.selected {
+  background-color: #d2e2fc;
+}
 
 .button-container {
   width: 56px;
